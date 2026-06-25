@@ -1,46 +1,45 @@
 ---
-import Icon from '@components/Icon.astro';
 import SectionHeading from '@components/SectionHeading.astro';
 import { PROPERTY_TYPES, waLink } from '@/consts';
 ---
 
 <section
 	id='que-trabajamos'
-	class='bg-cream-deep py-20 sm:py-24'
+	class='px-6 py-16'
 >
-	<div class='container'>
+	<div class='mx-auto max-w-[1180px]'>
 		<SectionHeading
 			eyebrow='Qué trabajamos'
 			title='Te acompañamos en cada tipo de propiedad'
 			subtitle='No publicamos un catálogo fijo: cada propiedad disponible te la enviamos por WhatsApp según lo que buscas.'
 		/>
 
-		<ul class='mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4'>
+		<ul class='mt-[50px] grid gap-[22px] sm:grid-cols-2 lg:grid-cols-4'>
 			{
 				PROPERTY_TYPES.map((item) => (
-					<li class='flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm shadow-slate/5 ring-1 ring-slate/5 transition-shadow hover:shadow-md'>
-						<img
-							src={item.image}
-							alt={item.imageAlt}
-							class='h-44 w-full object-cover'
-							width='820'
-							height='615'
-							loading='lazy'
-						/>
-						<div class='flex flex-1 flex-col p-5'>
-							<h3 class='text-lg font-semibold text-slate'>{item.title}</h3>
-							<p class='mt-2 flex-1 text-sm leading-relaxed text-gray'>{item.description}</p>
+					<li class='flex flex-col overflow-hidden rounded-[24px] bg-white shadow-[0_20px_44px_-30px_rgba(74,79,84,0.45)] transition-[transform,box-shadow] duration-300 hover:-translate-y-2 hover:shadow-[0_34px_60px_-30px_rgba(74,79,84,0.5)]'>
+						<div class='p-3 pb-0'>
+							<div class='aspect-[5/4] overflow-hidden rounded-[18px]'>
+								<img
+									src={item.image}
+									alt={item.imageAlt}
+									class='size-full object-cover'
+									width='820'
+									height='656'
+									loading='lazy'
+								/>
+							</div>
+						</div>
+						<div class='flex flex-1 flex-col px-[22px] pb-6 pt-5'>
+							<h3 class='mb-[9px] font-heading text-[20px] font-semibold text-ink'>{item.title}</h3>
+							<p class='mb-[18px] flex-1 text-[14.5px] font-normal leading-[1.6] text-gray'>{item.description}</p>
 							<a
 								href={waLink(item.waMessage)}
 								target='_blank'
 								rel='noopener'
-								class='btn mt-5 w-full bg-copper/10 px-4 py-2.5 text-sm text-copper-deep hover:bg-copper hover:text-white'
+								class='flex items-center justify-center rounded-[12px] bg-copper p-3 text-[14px] font-bold text-white transition-colors hover:bg-copper-dark'
 								aria-label={`Consultar disponibilidad de ${item.title.toLowerCase()} por WhatsApp`}
 							>
-								<Icon
-									name='whatsapp'
-									size={16}
-								/>
 								Consultar disponibilidad
 							</a>
 						</div>

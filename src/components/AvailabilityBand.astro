@@ -3,53 +3,56 @@ import Icon from '@components/Icon.astro';
 import { waLink, CONTACT } from '@/consts';
 ---
 
+<section class='px-6 py-16'>
+	<div
+		class='relative mx-auto max-w-[920px] overflow-hidden rounded-[30px] bg-white p-[clamp(40px,6vw,72px)] text-center shadow-[0_40px_80px_-44px_rgba(74,79,84,0.5)]'
+	>
+		<!-- decorative corner -->
+		<div
+			class='pointer-events-none absolute -right-[60px] -top-[60px] size-[200px] rounded-full bg-[#f6f0e7]'
+			aria-hidden='true'>
+		</div>
 
-<section class='bg-cream-deep pb-20 sm:pb-24'>
-	<div class='container'>
-		<div class='relative overflow-hidden rounded-3xl bg-white px-6 py-14 text-center shadow-sm shadow-slate/5 sm:px-12'>
-			<!-- decorative corner -->
-			<div
-				class='pointer-events-none absolute -right-16 -top-16 size-48 rounded-full bg-copper/10'
-				aria-hidden='true'>
-			</div>
+		<div class='relative'>
+			<span
+				class='mx-auto mb-6 flex size-[72px] items-center justify-center rounded-full bg-cream-deep text-copper'
+			>
+				<img
+					src='/img/icon-disponibilidad.png'
+					alt=''
+					class='size-[42px] object-contain'
+					width='240'
+					height='240'
+				/>
+			</span>
 
-			<div class='relative mx-auto max-w-xl'>
-				<span class='mx-auto flex size-16 items-center justify-center rounded-full bg-cream'>
-					<img
-						src='/img/icon-disponibilidad.png'
-						alt=''
-						class='size-10'
-						width='240'
-						height='240'
-					/>
-				</span>
+			<p class='mb-3.5 text-[12.5px] font-bold uppercase tracking-[2px] text-copper-dark'>Disponibilidad en tiempo real</p>
+			<h2
+				class='mx-auto mb-[18px] max-w-[640px] font-heading text-[clamp(27px,3.6vw,42px)] font-semibold leading-[1.1] tracking-[-0.5px] text-ink'
+			>
+				El inventario se mueve rápido. Lo de hoy quizá no esté mañana.
+			</h2>
+			<p class='mx-auto mb-8 max-w-[560px] text-[17px] font-normal leading-[1.7] text-gray'>
+				Por eso no publicamos un catálogo fijo. Escríbenos por WhatsApp y te enviamos las opciones disponibles ahora
+				mismo, según tu zona y tu presupuesto.
+			</p>
 
-				<p class='mt-6 text-xs font-semibold uppercase tracking-[0.22em] text-copper'>Disponibilidad en tiempo real</p>
-				<h2 class='mt-3 text-3xl font-medium leading-tight text-slate sm:text-4xl'>
-					El inventario se mueve rápido. Lo de hoy quizá no esté mañana.
-				</h2>
-				<p class='mt-4 text-base leading-relaxed text-gray'>
-					Por eso no publicamos un catálogo fijo. Escríbenos por WhatsApp y te enviamos las opciones disponibles ahora
-					mismo, según tu zona y tu presupuesto.
-				</p>
+			<a
+				href={waLink('Hola Madrigal, ¿qué tienen disponible hoy?')}
+				target='_blank'
+				rel='noopener'
+				class='inline-flex items-center gap-[11px] rounded-full bg-copper px-[34px] py-[17px] text-[17px] font-bold text-white shadow-[0_16px_34px_-12px_rgba(205,161,118,0.85)] transition-colors hover:bg-copper-dark'
+			>
+				<Icon
+					name='whatsapp'
+					size={26}
+				/>
+				Escríbenos por WhatsApp
+			</a>
 
-				<a
-					href={waLink()}
-					target='_blank'
-					rel='noopener'
-					class='btn btn-primary mt-8 px-7 py-3.5 text-base'
-				>
-					<Icon
-						name='whatsapp'
-						size={20}
-					/>
-					Escríbenos por WhatsApp
-				</a>
-
-				<p class='mt-4 text-sm text-gray-mute'>
-					Te decimos qué tenemos disponible hoy · {CONTACT.phoneDisplay}
-				</p>
-			</div>
+			<p class='mt-4 text-[13.5px] font-light text-gray-mute'>
+				Te decimos qué tenemos disponible hoy · {CONTACT.phoneDisplay}
+			</p>
 		</div>
 	</div>
 </section>

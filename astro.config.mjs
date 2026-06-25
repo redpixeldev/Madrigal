@@ -21,7 +21,7 @@ export default defineConfig({
       provider: fontProviders.google(),
       name: 'Mulish',
       cssVariable: '--font-mulish',
-      weights: [300, 400, 500, 600, 700],
+      weights: [300, 400, 500, 600, 700, 800],
       styles: ['normal'],
     },
   ],

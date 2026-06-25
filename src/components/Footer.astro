@@ -1,1 +1,124 @@
-<div class='bg-green-100'>footer</div>
+---
+import Icon from '@components/Icon.astro';
+import { NAV_LINKS, CONTACT, waLink, SITE } from '@/consts';
+
+const year = new Date().getFullYear();
+---
+
+<footer
+	id='contacto'
+	class='bg-ink text-cream/80'
+>
+	<div class='container grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.5fr]'>
+		<!-- Brand -->
+		<div>
+			<img
+				src='/img/logo-light.png'
+				alt={`${SITE.name} · ${SITE.tagline}`}
+				class='h-11 w-auto'
+				width='480'
+				height='282'
+			/>
+			<p class='mt-5 max-w-sm text-sm leading-relaxed text-cream/70'>
+				Asesoría inmobiliaria cercana en República Dominicana. Casas, apartamentos, solares y proyectos en planos.
+			</p>
+		</div>
+
+		<!-- Navigation -->
+		<nav aria-label='Enlaces del pie de página'>
+			<h2 class='text-xs font-semibold uppercase tracking-[0.18em] text-copper'>Navegación</h2>
+			<ul class='mt-5 space-y-3 text-sm'>
+				{
+					NAV_LINKS.map((link) => (
+						<li>
+							<a
+								href={link.href}
+								class='text-cream/70 transition-colors hover:text-copper'
+							>
+								{link.label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+
+		<!-- Contact -->
+		<div>
+			<h2 class='text-xs font-semibold uppercase tracking-[0.18em] text-copper'>Contacto</h2>
+			<ul class='mt-5 space-y-4 text-sm'>
+				<li>
+					<a
+						href={waLink()}
+						target='_blank'
+						rel='noopener'
+						class='flex items-center gap-3 text-cream/80 transition-colors hover:text-copper'
+					>
+						<Icon
+							name='whatsapp'
+							size={18}
+							class='shrink-0 text-copper'
+						/>
+						WhatsApp · {CONTACT.phoneDisplay}
+					</a>
+				</li>
+				<li>
+					<a
+						href={`tel:+${CONTACT.whatsapp}`}
+						class='flex items-center gap-3 text-cream/80 transition-colors hover:text-copper'
+					>
+						<Icon
+							name='phone'
+							size={18}
+							class='shrink-0 text-copper'
+						/>
+						Tel. {CONTACT.phoneDisplay}
+					</a>
+				</li>
+				<li>
+					<a
+						href={`mailto:${CONTACT.email}`}
+						class='flex items-center gap-3 text-cream/80 transition-colors hover:text-copper'
+					>
+						<Icon
+							name='mail'
+							size={18}
+							class='shrink-0 text-copper'
+						/>
+						{CONTACT.email}
+					</a>
+				</li>
+				<li>
+					<a
+						href={CONTACT.instagramUrl}
+						target='_blank'
+						rel='noopener'
+						class='flex items-center gap-3 text-cream/80 transition-colors hover:text-copper'
+					>
+						<Icon
+							name='instagram'
+							size={18}
+							class='shrink-0 text-copper'
+						/>
+						Instagram · @{CONTACT.instagram}
+					</a>
+				</li>
+				<li class='flex items-center gap-3 text-cream/70'>
+					<Icon
+						name='map-pin'
+						size={18}
+						class='shrink-0 text-copper'
+					/>
+					{CONTACT.location}
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class='border-t border-cream/10'>
+		<div class='container flex flex-col items-center justify-between gap-2 py-6 text-xs text-cream/55 sm:flex-row'>
+			<p>© {year} {SITE.name} · {SITE.tagline}. Todos los derechos reservados.</p>
+			<p>Hecho con trato cercano 🇩🇴</p>
+		</div>
+	</div>
+</footer>

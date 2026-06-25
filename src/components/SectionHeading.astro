@@ -1,0 +1,23 @@
+---
+interface Props {
+	eyebrow: string;
+	title: string;
+	subtitle?: string;
+	align?: 'center' | 'left';
+	id?: string;
+}
+
+const { eyebrow, title, subtitle, align = 'center', id } = Astro.props;
+const isCenter = align === 'center';
+---
+
+<div class={isCenter ? 'mx-auto max-w-2xl text-center' : 'max-w-2xl text-left'}>
+	<p class='text-xs font-semibold uppercase tracking-[0.22em] text-copper'>{eyebrow}</p>
+	<h2
+		id={id}
+		class='mt-3 text-3xl font-medium leading-tight text-slate sm:text-4xl'
+	>
+		{title}
+	</h2>
+	{subtitle && <p class='mt-4 text-base leading-relaxed text-gray'>{subtitle}</p>}
+</div>

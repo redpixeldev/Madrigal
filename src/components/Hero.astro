@@ -1,0 +1,76 @@
+---
+import Icon from '@components/Icon.astro';
+import { waLink } from '@/consts';
+---
+
+<section
+	id='inicio'
+	class='px-6 pt-12'
+>
+	<div class='mx-auto max-w-[860px] text-center'>
+		<div
+			class='mb-[26px] inline-flex items-center gap-[9px] rounded-full border border-[#ece2d2] bg-white px-4 py-2 text-[12.5px] font-bold uppercase tracking-[1.2px] text-copper-dark shadow-[0_8px_20px_-14px_rgba(74,79,84,0.4)]'
+		>
+			<span
+				class='size-2 rounded-full bg-copper'
+				aria-hidden='true'></span>
+			Asesoría inmobiliaria · República Dominicana
+		</div>
+
+		<h1
+			class='mb-[22px] font-heading text-[clamp(36px,5.4vw,66px)] font-semibold leading-[1.05] tracking-[-1px] text-ink'
+		>
+			Tu próximo hogar, con un trato <span class='text-copper'>cercano y honesto.</span>
+		</h1>
+
+		<p class='mx-auto mb-[34px] max-w-[620px] text-[clamp(17px,1.5vw,20px)] font-light leading-[1.7] text-slate-soft'>
+			Casas, apartamentos, solares y proyectos en planos en toda República Dominicana. Como el inventario cambia cada
+			semana, <strong class='font-bold text-slate'
+				>escríbenos por WhatsApp y te decimos qué tenemos disponible hoy.</strong
+			>
+		</p>
+
+		<div class='flex flex-wrap justify-center gap-[14px]'>
+			<a
+				href={waLink()}
+				target='_blank'
+				rel='noopener'
+				class='inline-flex items-center gap-[10px] rounded-full bg-copper px-[30px] py-4 text-base font-bold text-white shadow-[0_14px_30px_-12px_rgba(205,161,118,0.85)] transition-colors hover:bg-copper-dark'
+			>
+				<Icon
+					name='whatsapp'
+					size={25}
+				/>
+				Consultar disponibilidad
+			</a>
+			<a
+				href='#que-trabajamos'
+				class='inline-flex items-center rounded-full border-[1.5px] border-[#e2d8c8] bg-white px-7 py-[15px] text-base font-bold text-slate transition-colors hover:border-copper hover:text-copper-dark'
+			>
+				Conócenos
+			</a>
+		</div>
+	</div>
+
+	<!-- Hero image card -->
+	<div class='relative mx-auto mt-[54px] max-w-[1180px]'>
+		<div
+			class='relative aspect-[3/2] overflow-hidden rounded-[28px] shadow-[0_50px_90px_-40px_rgba(74,79,84,0.55)] sm:aspect-[21/9]'
+		>
+			<img
+				src='/img/hero.webp'
+				alt='Interior cálido y luminoso de un hogar moderno con sala, comedor y cocina abiertos.'
+				class='size-full object-cover'
+				width='1600'
+				height='686'
+				fetchpriority='high'
+			/>
+		</div>
+		<div
+			class='absolute bottom-6 left-6 rounded-[18px] bg-[#fbf8f3]/95 px-[22px] py-4 text-left shadow-[0_24px_50px_-24px_rgba(74,79,84,0.5)] backdrop-blur-sm'
+		>
+			<p class='font-heading text-[19px] font-semibold text-ink'>Casas · Apartamentos · Solares · Planos</p>
+			<p class='mt-0.5 text-[13.5px] text-gray-soft'>acompañamiento total, ya sea para vivir o invertir</p>
+		</div>
+	</div>
+</section>

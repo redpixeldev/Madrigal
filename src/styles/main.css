@@ -4,34 +4,99 @@
 
 @theme {
 	--font-*: initial;
-	--font-heading: var(--font-inter);
-	--font-body: var(--font-inter);
+	--font-heading: var(--font-montserrat-alternates);
+	--font-body: var(--font-mulish);
 
-	--color-brand-primary: ;
+	/* Brand palette — sampled directly from the Madrigal Realty design */
+	--color-brand-primary: #cda176;
+	--color-copper: #cda176;
+	--color-copper-dark: #b98a5e;
+	--color-copper-deep: #a9794f;
+
+	--color-slate: #4a4f54;
+	--color-ink: #3d4145;
+	--color-slate-soft: #5a6066;
+
+	--color-gray: #6e747a;
+	--color-gray-soft: #8a9097;
+	--color-gray-mute: #9aa0a6;
+	--color-line: #c6cace;
+
+	--color-cream: #f8f3eb;
+	--color-cream-deep: #f2ede6;
+	--color-sand: #ece5d9;
+	--color-sand-deep: #e2d8c8;
 }
 
 @utility container {
 	margin-inline: auto;
-	padding-inline: 1rem;
+	width: 100%;
+	max-width: 75rem; /* 1200px */
+	padding-inline: clamp(1.25rem, 5vw, 2rem);
 }
 
 @plugin "@tailwindcss/typography";
 @plugin "@tailwindcss/forms";
 
 @utility btn {
-	@apply transition-colors duration-300 ease-linear;
+	@apply inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-colors duration-300 ease-out;
 }
 
 @utility btn-primary {
-	@apply bg-brand-primary text-white;
+	@apply bg-brand-primary text-white hover:bg-copper-dark;
+}
+
+@utility btn-outline {
+	@apply border border-copper bg-transparent text-slate hover:bg-copper hover:text-white;
 }
 
 @layer base {
 	html {
-		@apply font-body antialiased;
+		@apply font-body text-slate antialiased;
+		scroll-behavior: smooth;
+		/* offset anchored scroll so sticky header doesn't cover headings */
+		scroll-padding-top: 6rem;
+	}
+
+	body {
+		@apply bg-cream-deep;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		@apply font-heading;
+		text-wrap: balance;
+	}
+
+	/* Visible, brand-consistent keyboard focus (WCAG 2.2 — 2.4.7 / 2.4.11) */
+	:where(a, button, [role='button'], input, summary, [tabindex]):focus-visible {
+		outline: 2px solid var(--color-copper-deep);
+		outline-offset: 2px;
+		border-radius: 0.25rem;
+	}
+
+	::selection {
+		background: var(--color-copper);
+		color: #fff;
 	}
 
 	[x-cloak] {
 		@apply hidden!;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
 	}
 }

@@ -1,0 +1,87 @@
+---
+import SectionHeading from '@components/SectionHeading.astro';
+import { TESTIMONIALS } from '@/consts';
+
+const initials = (name: string) =>
+	name
+		.split(' ')
+		.slice(0, 2)
+		.map((n) => n[0])
+		.join('')
+		.toUpperCase();
+---
+
+<section class='bg-cream py-20 sm:py-24'>
+	<div class='container'>
+		<SectionHeading
+			eyebrow='Testimonios'
+			title='Lo que dicen quienes ya dieron el paso'
+		/>
+
+		<div
+			class='testimonials-swiper swiper mt-14'
+			role='region'
+			aria-roledescription='carrusel'
+			aria-label='Testimonios de clientes'
+		>
+			<div class='swiper-wrapper'>
+				{
+					TESTIMONIALS.map((t) => (
+						<div class='swiper-slide h-auto'>
+							<figure class='flex h-full flex-col rounded-2xl border border-line/50 bg-white p-7'>
+								<span
+									class='font-heading text-5xl leading-none text-copper/40'
+									aria-hidden='true'
+								>
+									“
+								</span>
+								<blockquote class='mt-2 flex-1 text-sm leading-relaxed text-slate-soft'>{t.quote}</blockquote>
+								<figcaption class='mt-6 flex items-center gap-3'>
+									<span
+										class='flex size-11 shrink-0 items-center justify-center rounded-full bg-copper/15 text-sm font-semibold text-copper-deep'
+										aria-hidden='true'
+									>
+										{initials(t.name)}
+									</span>
+									<span>
+										<span class='block text-sm font-semibold text-slate'>{t.name}</span>
+										<span class='block text-xs text-gray-mute'>{t.location}</span>
+									</span>
+								</figcaption>
+							</figure>
+						</div>
+					))
+				}
+			</div>
+			<div class='swiper-pagination !static mt-8'></div>
+		</div>
+	</div>
+</section>
+
+<style is:global>
+	.testimonials-swiper {
+		--swiper-pagination-color: var(--color-copper);
+		--swiper-pagination-bullet-inactive-color: var(--color-line);
+		--swiper-pagination-bullet-inactive-opacity: 1;
+		padding-bottom: 0.25rem;
+	}
+</style>
+
+<script is:inline>
+	(function initTestimonials() {
+		if (typeof window.Swiper === 'undefined') {
+			return window.setTimeout(initTestimonials, 40);
+		}
+		new window.Swiper('.testimonials-swiper', {
+			slidesPerView: 1,
+			spaceBetween: 24,
+			grabCursor: true,
+			a11y: { enabled: true },
+			pagination: { el: '.testimonials-swiper .swiper-pagination', clickable: true },
+			breakpoints: {
+				640: { slidesPerView: 2 },
+				1024: { slidesPerView: 3 },
+			},
+		});
+	})();
+</script>

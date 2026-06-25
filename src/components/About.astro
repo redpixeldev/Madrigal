@@ -1,0 +1,59 @@
+---
+import Icon from '@components/Icon.astro';
+import { waLink } from '@/consts';
+---
+
+<section
+	id='nosotros'
+	class='bg-sand/50 py-20 sm:py-24'
+>
+	<div class='container grid items-center gap-12 lg:grid-cols-2 lg:gap-16'>
+		<div>
+			<p class='text-xs font-semibold uppercase tracking-[0.22em] text-copper'>Sobre nosotros</p>
+			<h2 class='mt-3 text-3xl font-medium leading-tight text-slate sm:text-4xl'>
+				Más que cerrar una venta, nos importa tu decisión
+			</h2>
+			<div class='mt-5 space-y-4 text-base leading-relaxed text-gray'>
+				<p>
+					Somos asesores inmobiliarios en República Dominicana enfocados en un trato humano. Te acompañamos con
+					honestidad, paciencia y conocimiento del mercado local, desde la primera conversación hasta que recibes tus
+					llaves.
+				</p>
+				<p>
+					Ya sea que busques tu primera vivienda, un apartamento para invertir o un solar para construir, estamos para
+					que tomes una buena decisión, con calma y bien informado.
+				</p>
+			</div>
+			<a
+				href={waLink()}
+				target='_blank'
+				rel='noopener'
+				class='btn btn-primary mt-8 px-7 py-3.5 text-base'
+			>
+				<Icon
+					name='whatsapp'
+					size={20}
+				/>
+				Hablemos por WhatsApp
+			</a>
+		</div>
+
+		<div class='relative'>
+			<img
+				src='/img/about.webp'
+				alt='Asesor de Madrigal Realty acompañando a una pareja mientras revisan documentos en una mesa.'
+				class='aspect-[4/3] w-full rounded-3xl object-cover shadow-xl shadow-slate/10'
+				width='1000'
+				height='750'
+				loading='lazy'
+			/>
+			<div class='absolute -left-3 top-6 rounded-2xl bg-white px-4 py-3 shadow-lg shadow-slate/10 sm:left-auto sm:right-6'>
+				<p class='flex items-center gap-2 text-sm font-semibold text-slate'>
+					<span class='flex size-5 items-center justify-center rounded-full bg-copper text-[10px] text-white' aria-hidden='true'>✓</span>
+					Trato 100% humano
+				</p>
+				<p class='mt-0.5 text-xs text-gray-mute'>de principio a fin</p>
+			</div>
+		</div>
+	</div>
+</section>

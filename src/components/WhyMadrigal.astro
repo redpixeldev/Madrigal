@@ -1,0 +1,34 @@
+---
+import SectionHeading from '@components/SectionHeading.astro';
+import { FEATURES } from '@/consts';
+---
+
+<section class='bg-cream py-20 sm:py-24'>
+	<div class='container'>
+		<SectionHeading
+			eyebrow='Por qué Madrigal'
+			title='Una asesoría cercana en la que puedes confiar'
+		/>
+
+		<ul class='mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4'>
+			{
+				FEATURES.map((feature) => (
+					<li class='rounded-2xl border border-line/50 bg-white/60 p-7 text-center'>
+						<span class='mx-auto flex size-16 items-center justify-center rounded-full bg-copper/10'>
+							<img
+								src={feature.icon}
+								alt=''
+								class='size-9'
+								width='240'
+								height='240'
+								loading='lazy'
+							/>
+						</span>
+						<h3 class='mt-5 text-lg font-semibold text-slate'>{feature.title}</h3>
+						<p class='mt-2 text-sm leading-relaxed text-gray'>{feature.description}</p>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>

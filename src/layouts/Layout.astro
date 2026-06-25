@@ -1,12 +1,21 @@
 ---
 import '../styles/main.css';
 import { Font } from 'astro:assets';
+import { SITE } from '@/consts';
 
-const { title } = Astro.props;
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = `${SITE.name} · ${SITE.tagline}`,
+	description = SITE.description,
+} = Astro.props;
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang='es'>
 	<head>
 		<meta charset='UTF-8' />
 		<meta
@@ -14,23 +23,74 @@ const { title } = Astro.props;
 			content='width=device-width,initial-scale=1.0'
 		/>
 		<title>{title}</title>
+		<meta
+			name='description'
+			content={description}
+		/>
+		<meta
+			name='theme-color'
+			content='#f2ede6'
+		/>
+
+		<!-- Open Graph -->
+		<meta
+			property='og:type'
+			content='website'
+		/>
+		<meta
+			property='og:title'
+			content={title}
+		/>
+		<meta
+			property='og:description'
+			content={description}
+		/>
+		<meta
+			property='og:image'
+			content='/img/hero.webp'
+		/>
+		<meta
+			property='og:locale'
+			content='es_DO'
+		/>
+
 		<Font
-			cssVariable='--font-inter'
+			cssVariable='--font-montserrat-alternates'
+			preload={[{ weight: '600' }]}
+		/>
+		<Font
+			cssVariable='--font-mulish'
 			preload={[{ weight: '400' }]}
 		/>
+
 		<link
 			rel='icon'
 			type='image/png'
-			sizes='32x32'
+			sizes='64x64'
 			href='/favicon.png'
 		/>
 
+		<!-- Swiper (slider for testimonials) -->
+		<link
+			rel='stylesheet'
+			href='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css'
+		/>
 		<script
 			defer
-			src='https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js'
-		></script>
+			src='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js'></script>
+
+		<!-- Alpine.js (lightweight client interactivity) -->
+		<script
+			defer
+			src='https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js'></script>
 	</head>
 	<body>
+		<a
+			href='#contenido'
+			class='sr-only rounded-full bg-slate px-4 py-2 text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100]'
+		>
+			Saltar al contenido
+		</a>
 		<slot />
 	</body>
 </html>

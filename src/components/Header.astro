@@ -1,1 +1,130 @@
-<div class='bg-blue-100'>header</div>
+---
+import Icon from '@components/Icon.astro';
+import { NAV_LINKS, waLink, SITE } from '@/consts';
+---
+
+<header
+	x-data='{ open: false, scrolled: false }'
+	x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 8)"
+	class='sticky top-0 z-50'
+>
+	<div class='mx-auto max-w-[1180px] px-4 pt-3.5'>
+		<div
+			:class="scrolled ? 'shadow-[0_18px_40px_-22px_rgba(74,79,84,0.55)]' : 'shadow-[0_14px_34px_-24px_rgba(74,79,84,0.5)]'"
+			class='flex h-[66px] items-center justify-between gap-5 rounded-xl border border-slate/[0.08] bg-[#fbf8f3]/85 pl-[18px] pr-3 backdrop-blur-md backdrop-saturate-150 transition-shadow'
+		>
+			<a
+				href='#inicio'
+				class='flex flex-none items-center'
+				aria-label={`${SITE.name} — inicio`}
+			>
+				<img
+					src='/img/logo-dark.png'
+					alt={`${SITE.name} · ${SITE.tagline}`}
+					class='h-12 w-auto'
+					width='480'
+					height='277'
+				/>
+			</a>
+
+			<!-- Desktop nav -->
+			<nav
+				class='hidden items-center gap-[30px] lg:flex'
+				aria-label='Navegación principal'
+			>
+				{
+					NAV_LINKS.map((link) => (
+						<a
+							href={link.href}
+							class='text-[14.5px] font-semibold text-slate transition-colors hover:text-copper'
+						>
+							{link.label}
+						</a>
+					))
+				}
+			</nav>
+
+			<div class='flex flex-none items-center gap-2'>
+				<a
+					href={waLink()}
+					target='_blank'
+					rel='noopener'
+					class='hidden items-center gap-2 rounded-full bg-copper px-[18px] py-[11px] text-[14px] font-bold text-white transition-colors hover:bg-copper-dark sm:inline-flex'
+				>
+					<Icon
+						name='whatsapp'
+						size={23}
+					/>
+					WhatsApp
+				</a>
+
+				<!-- Mobile menu toggle -->
+				<button
+					type='button'
+					class='text-slate lg:hidden'
+					@click='open = !open'
+					:aria-expanded="open ? 'true' : 'false'"
+					aria-controls='mobile-menu'
+					:aria-label="open ? 'Cerrar menú' : 'Abrir menú'"
+					aria-label='Abrir menú'
+				>
+					<span x-show='!open'>
+						<Icon
+							name='menu'
+							size={28}
+						/>
+					</span>
+					<span
+						x-show='open'
+						x-cloak
+					>
+						<Icon
+							name='close'
+							size={28}
+						/>
+					</span>
+				</button>
+			</div>
+		</div>
+
+		<!-- Mobile menu panel -->
+		<div
+			id='mobile-menu'
+			x-show='open'
+			x-cloak
+			x-transition.opacity
+			@keydown.escape.window='open = false'
+			class='mt-2 overflow-hidden rounded-xl border border-slate/[0.08] bg-[#fbf8f3] shadow-[0_14px_34px_-24px_rgba(74,79,84,0.5)] lg:hidden'
+		>
+			<ul class='flex flex-col gap-1 p-4'>
+				{
+					NAV_LINKS.map((link) => (
+						<li>
+							<a
+								href={link.href}
+								@click='open = false'
+								class='block rounded-lg px-2 py-3 text-base font-semibold text-slate transition-colors hover:bg-sand hover:text-copper'
+							>
+								{link.label}
+							</a>
+						</li>
+					))
+				}
+				<li class='pt-2'>
+					<a
+						href={waLink()}
+						target='_blank'
+						rel='noopener'
+						class='flex w-full items-center justify-center gap-[9px] rounded-full bg-copper px-5 py-3.5 text-[15px] font-bold text-white'
+					>
+						<Icon
+							name='whatsapp'
+							size={23}
+						/>
+						Consultar por WhatsApp
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</header>

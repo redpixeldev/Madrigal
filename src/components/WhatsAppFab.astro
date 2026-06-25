@@ -1,0 +1,18 @@
+---
+import Icon from '@components/Icon.astro';
+import { waLink } from '@/consts';
+---
+
+<a
+	href={waLink()}
+	target='_blank'
+	rel='noopener'
+	class='fixed bottom-[22px] right-[22px] z-[60] inline-flex items-center gap-[10px] rounded-full bg-copper px-5 py-[14px] text-[15px] font-bold text-white shadow-[0_16px_34px_-10px_rgba(205,161,118,0.85)] transition-transform hover:scale-[1.02] hover:bg-copper-dark'
+	aria-label='Consultar disponibilidad por WhatsApp'
+>
+	<Icon
+		name='whatsapp'
+		size={29}
+	/>
+	WhatsApp
+</a>

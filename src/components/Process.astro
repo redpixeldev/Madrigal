@@ -1,0 +1,46 @@
+---
+import SectionHeading from '@components/SectionHeading.astro';
+import { STEPS } from '@/consts';
+---
+
+<section
+	id='proceso'
+	class='bg-cream-deep py-20 sm:py-24'
+>
+	<div class='container'>
+		<SectionHeading
+			eyebrow='Cómo trabajamos'
+			title='Un proceso simple, de principio a fin'
+		/>
+
+		<ol class='relative mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6'>
+			<!-- connecting line (desktop) -->
+			<div
+				class='absolute left-[12.5%] right-[12.5%] top-7 hidden h-px bg-line lg:block'
+				aria-hidden='true'>
+			</div>
+
+			{
+				STEPS.map((step, i) => {
+					const isLast = i === STEPS.length - 1;
+					return (
+						<li class='relative text-center'>
+							<span
+								class:list={[
+									'relative z-10 mx-auto flex size-14 items-center justify-center rounded-full text-lg font-semibold',
+									isLast
+										? 'bg-copper text-white shadow-md shadow-copper/30'
+										: 'bg-cream-deep text-copper ring-2 ring-copper/40',
+								]}
+							>
+								{step.number}
+							</span>
+							<h3 class='mt-5 text-base font-semibold text-slate'>{step.title}</h3>
+							<p class='mx-auto mt-2 max-w-[15rem] text-sm leading-relaxed text-gray'>{step.description}</p>
+						</li>
+					);
+				})
+			}
+		</ol>
+	</div>
+</section>

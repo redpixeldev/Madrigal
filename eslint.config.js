@@ -1,9 +1,18 @@
 import tailwind from 'eslint-plugin-tailwindcss';
 import eslintPluginAstro from 'eslint-plugin-astro';
+import tsParser from '@typescript-eslint/parser';
 
 export default [
 	tailwind.configs.recommended,
 	...eslintPluginAstro.configs.recommended,
+	{
+		// Parse standalone TypeScript files (e.g. src/consts.ts) with the TS parser.
+		files: ['**/*.ts'],
+		languageOptions: {
+			parser: tsParser,
+			parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+		},
+	},
 	{
 		settings: {
 			tailwindcss: {

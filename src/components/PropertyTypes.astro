@@ -1,0 +1,52 @@
+---
+import Icon from '@components/Icon.astro';
+import SectionHeading from '@components/SectionHeading.astro';
+import { PROPERTY_TYPES, waLink } from '@/consts';
+---
+
+<section
+	id='que-trabajamos'
+	class='bg-cream-deep py-20 sm:py-24'
+>
+	<div class='container'>
+		<SectionHeading
+			eyebrow='Qué trabajamos'
+			title='Te acompañamos en cada tipo de propiedad'
+			subtitle='No publicamos un catálogo fijo: cada propiedad disponible te la enviamos por WhatsApp según lo que buscas.'
+		/>
+
+		<ul class='mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4'>
+			{
+				PROPERTY_TYPES.map((item) => (
+					<li class='flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm shadow-slate/5 ring-1 ring-slate/5 transition-shadow hover:shadow-md'>
+						<img
+							src={item.image}
+							alt={item.imageAlt}
+							class='h-44 w-full object-cover'
+							width='820'
+							height='615'
+							loading='lazy'
+						/>
+						<div class='flex flex-1 flex-col p-5'>
+							<h3 class='text-lg font-semibold text-slate'>{item.title}</h3>
+							<p class='mt-2 flex-1 text-sm leading-relaxed text-gray'>{item.description}</p>
+							<a
+								href={waLink(item.waMessage)}
+								target='_blank'
+								rel='noopener'
+								class='btn mt-5 w-full bg-copper/10 px-4 py-2.5 text-sm text-copper-deep hover:bg-copper hover:text-white'
+								aria-label={`Consultar disponibilidad de ${item.title.toLowerCase()} por WhatsApp`}
+							>
+								<Icon
+									name='whatsapp'
+									size={16}
+								/>
+								Consultar disponibilidad
+							</a>
+						</div>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>

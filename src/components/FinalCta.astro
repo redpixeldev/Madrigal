@@ -30,13 +30,13 @@ import { waLink } from '@/consts';
 				href={waLink()}
 				target='_blank'
 				rel='noopener'
-				class='inline-flex items-center gap-[11px] rounded-full bg-white px-9 py-[18px] text-[17px] font-extrabold text-copper-deep shadow-[0_18px_40px_-16px_rgba(0,0,0,0.4)] transition-transform hover:-translate-y-0.5'
+				class='inline-flex items-center gap-[11px] whitespace-nowrap rounded-full bg-white px-9 py-[18px] text-[17px] font-extrabold text-copper-deep shadow-[0_18px_40px_-16px_rgba(0,0,0,0.4)] transition-transform hover:-translate-y-0.5 max-md:px-7 max-md:text-[16px]'
 			>
 				<Icon
 					name='whatsapp'
 					size={26}
 				/>
-				Consultar disponibilidad por WhatsApp
+				Consultar disponibilidad<span class='max-md:hidden'>&nbsp;por WhatsApp</span>
 			</a>
 		</div>
 	</div>

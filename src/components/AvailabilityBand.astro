@@ -3,13 +3,13 @@ import Icon from '@components/Icon.astro';
 import { waLink, CONTACT } from '@/consts';
 ---
 
-<section class='px-6 py-16'>
+<section class='px-6 pt-7 sm:pt-16 pb-16'>
 	<div
-		class='relative mx-auto max-w-[920px] overflow-hidden rounded-[30px] bg-white p-[clamp(40px,6vw,72px)] text-center shadow-[0_40px_80px_-44px_rgba(74,79,84,0.5)]'
+		class='relative mx-auto max-w-[920px] overflow-hidden rounded-[30px] bg-white p-[clamp(24px,6vw,72px)] sm:p-[clamp(40px,6vw,72px)] text-center shadow-[0_40px_80px_-44px_rgba(74,79,84,0.5)]'
 	>
 		<!-- decorative corner -->
 		<div
-			class='pointer-events-none absolute -right-[60px] -top-[60px] size-[200px] rounded-full bg-[#f6f0e7]'
+			class='pointer-events-none absolute -right-[60px] -top-[60px] size-[160px] sm:size-[200px] rounded-full bg-[#f6f0e7]'
 			aria-hidden='true'>
 		</div>
 
@@ -41,7 +41,7 @@ import { waLink, CONTACT } from '@/consts';
 				href={waLink('Hola Madrigal, ¿qué tienen disponible hoy?')}
 				target='_blank'
 				rel='noopener'
-				class='inline-flex items-center gap-[11px] rounded-full bg-copper px-[34px] py-[17px] text-[17px] font-bold text-white shadow-[0_16px_34px_-12px_rgba(205,161,118,0.85)] transition-colors hover:bg-copper-dark'
+				class='inline-flex items-center gap-[11px] whitespace-nowrap rounded-full bg-copper px-[34px] py-[17px] text-[17px] font-bold text-white shadow-[0_16px_34px_-12px_rgba(205,161,118,0.85)] transition-colors hover:bg-copper-dark max-[767px]:px-7 max-md:text-[16px] max-[529px]:px-5'
 			>
 				<Icon
 					name='whatsapp'
